@@ -18,5 +18,24 @@ public class ActorService {
     {
         return this.actorRepository.findAll();
     }
+
+    public Actor createActor(Actor actor)
+    {
+        return this.actorRepository.save(actor);
+    }
+
+    public Actor updateActor(Long id, Actor updatedActor)
+    {
+        Actor a = this.actorRepository.findById(id).orElseThrow(() -> new RuntimeException("Actor not found"));
+
+        a.setFirstName(updatedActor.getFirstName());
+        a.setLastName(updatedActor.getLastName());
+
+        return a;
+    }
     
+    public void deleteActor(Long id)
+    {
+        this.actorRepository.deleteById(id);
+    }
 }
