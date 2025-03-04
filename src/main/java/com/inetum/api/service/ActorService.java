@@ -31,7 +31,7 @@ public class ActorService {
         a.setFirstName(updatedActor.getFirstName());
         a.setLastName(updatedActor.getLastName());
 
-        return a;
+        return this.actorRepository.save(a);
     }
     
     public void deleteActor(Long id)
